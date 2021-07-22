@@ -62,3 +62,20 @@ ALTER TABLE `category_product`
 ADD CONSTRAINT `product_has_category` FOREIGN KEY (`id_product`) REFERENCES `products`(`id_product`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE `category_product`
 ADD CONSTRAINT `category_has_product` FOREIGN KEY (`id_category`) REFERENCES `categories`(`id_category`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+CREATE TABLE `cms_pages` (
+    `id_cms_page` int(10) unsigned NOT NULL auto_increment,
+    `id_parent_page` int(10) unsigned NOT NULL,
+    `author` int(10) unsigned NOT NULL,
+    `slug` varchar(100) DEFAULT NULL,
+    `content` longtext,
+    `title` varchar(255) DEFAULT NULL,
+    `meta_title` varchar(255) DEFAULT NULL,
+    `meta_keywords` varchar(255) DEFAULT NULL,
+    `meta_description` varchar(512) DEFAULT NULL,
+    `status` varchar(20) NOT NULL DEFAULT 'publish',
+    `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `date_modified` datetime NOT NULL,
+    PRIMARY KEY (`id_cms_page`)
+) DEFAULT CHARSET = utf8;
+ALTER TABLE `cms_pages`
+ADD CONSTRAINT `page_has_author` FOREIGN KEY (`author`) REFERENCES `users`(`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;

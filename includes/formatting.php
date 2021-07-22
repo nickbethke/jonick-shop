@@ -120,7 +120,7 @@ function _specialchars($string, $quote_style = ENT_NOQUOTES, $charset = false, $
 function esc_attr($text)
 {
     $safe_text = check_invalid_utf8($text);
-    $safe_text = _specialchars($safe_text, ENT_QUOTES);
+    return _specialchars($safe_text, ENT_QUOTES);
 }
 function urlencode_deep($value)
 {

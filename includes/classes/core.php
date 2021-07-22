@@ -50,7 +50,16 @@ class Core
         }
 
         /* CMS */
-        $this->page = new PageCMS();
+        $requestSlug = implode('/', $requestArray);
+        if (PageCMS::page_exists($requestSlug)) {
+            $this->page = new PageCMS($requestSlug);
+        } else {
+            $this->page = new Page404;
+        }
+    }
+    public function set_page($page)
+    {
+        $this->page = $page;
     }
 
     private static function handleRequest()

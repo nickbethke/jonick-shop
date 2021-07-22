@@ -55,14 +55,25 @@ require_once INC_PATH . "classes/styles.php";
 global $styles;
 require_once INC_PATH . "styles.php";
 
+require_once INC_PATH . "classes/Parsedown.php";
+
 require_once INC_PATH . "classes/core.php";
 
 require_once INC_PATH . "classes/core.php";
 
 require_once INC_PATH . "function.php";
 
+require_once INC_PATH . "general-template.php";
 
 /* Plugins & Themes */
+global $theme;
+require_once INC_PATH . "themes.php";
+require_once INC_PATH . "classes/types/theme.php";
+load_theme();
+
+$theme->get_function_file() ? require_once $theme->get_function_file() : false;
+
+$files_to_load = $theme->load();
 
 if (defined("USE_THEMES")) {
     global $CORE;
@@ -71,6 +82,5 @@ if (defined("USE_THEMES")) {
     $CORE->load();
 
     $page = $CORE->getPage();
-
-    $page->render();
+    $page->render() ? require_once $page->render() : false;
 }
