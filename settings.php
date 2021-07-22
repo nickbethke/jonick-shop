@@ -1,0 +1,76 @@
+<?php
+define("INC_PATH", ABSPATH . "includes/");
+define("CONTENT_PATH", ABSPATH . "content/");
+
+$required_php_version = "7.3";
+
+require_once INC_PATH . "load.php";
+
+check_php_versions();
+
+global $db;
+
+require_db();
+
+require_once INC_PATH . "formatting.php";
+
+require_once INC_PATH . "classes/database/product.php";
+require_once INC_PATH . "classes/database/category.php";
+
+require_once INC_PATH . "classes/types/product.php";
+require_once INC_PATH . "classes/types/category.php";
+
+require_once INC_PATH . "classes/repos/productRepository.php";
+require_once INC_PATH . "classes/repos/categoryRepository.php";
+
+
+require_once INC_PATH . "classes/filter/equals.php";
+require_once INC_PATH . "classes/filter/unequals.php";
+require_once INC_PATH . "classes/filter/equalsAny.php";
+
+require_once INC_PATH . "abstract/criteria.php";
+
+require_once INC_PATH . "classes/criteria/productCriteria.php";
+require_once INC_PATH . "classes/criteria/categoryCriteria.php";
+
+require_once INC_PATH . "abstract/page.php";
+
+require_once INC_PATH . "classes/pages/indexPage.php";
+require_once INC_PATH . "classes/pages/categoryPage.php";
+require_once INC_PATH . "classes/pages/cmsPage.php";
+require_once INC_PATH . "classes/pages/productPage.php";
+require_once INC_PATH . "classes/pages/404Page.php";
+
+require_once INC_PATH . "user.php";
+require_once INC_PATH . "classes/user.php";
+
+require_once INC_PATH . "options.php";
+require_once INC_PATH . "http.php";
+require_once INC_PATH . "formatting.php";
+
+require_once INC_PATH . "classes/dependency.php";
+require_once INC_PATH . "classes/dependencies.php";
+require_once INC_PATH . "classes/styles.php";
+
+global $styles;
+require_once INC_PATH . "styles.php";
+
+require_once INC_PATH . "classes/core.php";
+
+require_once INC_PATH . "classes/core.php";
+
+require_once INC_PATH . "function.php";
+
+
+/* Plugins & Themes */
+
+if (defined("USE_THEMES")) {
+    global $CORE;
+    $CORE = new Core();
+    global $page;
+    $CORE->load();
+
+    $page = $CORE->getPage();
+
+    $page->render();
+}

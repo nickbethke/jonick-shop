@@ -1,0 +1,31 @@
+/* rajdhani-regular - latin */
+
+@font-face {
+    font-family: 'Rajdhani';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/includes/fonts/rajdhani/rajdhani-v10-latin-regular.eot');
+    /* IE9 Compat Modes */
+    src: local(''), url('/includes/fonts/rajdhani/rajdhani-v10-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/includes/fonts/rajdhani/rajdhani-v10-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('/includes/fonts/rajdhani/rajdhani-v10-latin-regular.woff') format('woff'), /* Modern Browsers */
+    url('/includes/fonts/rajdhani/rajdhani-v10-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('/includes/fonts/rajdhani/rajdhani-v10-latin-regular.svg#Rajdhani') format('svg');
+    /* Legacy iOS */
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.header-right {
+    width: 0;
+    display: none;
+}
+
+@media only screen and (min-width: 768px) {
+    .header-right {
+        width: calc(100% - 16rem);
+        display: inherit;
+    }
+}
