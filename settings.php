@@ -14,6 +14,8 @@ require_db();
 
 require_once INC_PATH . "formatting.php";
 
+require_once INC_PATH . "classes/imageHandler.php";
+
 require_once INC_PATH . "classes/database/product.php";
 require_once INC_PATH . "classes/database/category.php";
 

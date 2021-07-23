@@ -52,10 +52,16 @@ class Core
         /* CMS */
         $requestSlug = implode('/', $requestArray);
         if (PageCMS::page_exists($requestSlug)) {
-            $this->page = new PageCMS($requestSlug);
-        } else {
-            $this->page = new Page404;
+            $page = new PageCMS($requestSlug);
+            if ($page->is_public()) {
+                $this->page = $page;
+                return;
+            } else {
+                $this->page = new Page404;
+                return;
+            }
         }
+        $this->page = new Page404;
     }
     public function set_page($page)
     {

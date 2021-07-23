@@ -51,6 +51,13 @@ function jn_title()
 }
 function jn_head()
 {
+?>
+    <link rel="icon" type="image/png" sizes="192x192" href="<?php echo get_site_url() ?>/includes/fav/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_site_url() ?>/includes/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="<?php echo get_site_url() ?>/includes/fav/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_site_url() ?>/includes/fav/favicon-16x16.png">
+
+<?php
     $styles = styles();
     $stylesHandler = $styles->do_items();
     $styles->reset();

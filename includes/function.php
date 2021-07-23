@@ -261,3 +261,28 @@ function mysql2date($format, $date)
     }
     return $datetime->format($format);
 }
+
+function get_site_url($path = '')
+{
+    $url = get_option('siteurl');
+    if ($path && is_string($path)) {
+        $url .= '/' . ltrim($path, '/');
+    }
+    return $url;
+}
+function get_theme_url($path)
+{
+    $url = get_option('siteurl') . "/content/themes/" . get_option('active_theme');
+    if ($path && is_string($path)) {
+        $url .= '/' . ltrim($path, '/');
+    }
+    return $url;
+}
+function get_plugin_url($path)
+{
+    $url = get_option('siteurl') . "/content/plugin/";
+    if ($path && is_string($path)) {
+        $url .= '/' . ltrim($path, '/');
+    }
+    return $url;
+}

@@ -62,4 +62,18 @@ class PageCMS extends Page
         }
         return true;
     }
+    public static function page_public_and_exists($slug)
+    {
+        global $db;
+        $SQL = "SELECT * FROM `cms_pages` WHERE `slug` = '$slug' AND `status` = 'publish' LIMIT 1";
+        $row = $db->query($SQL)->fetchRow();
+        if (empty($row)) {
+            return false;
+        }
+        return true;
+    }
+    public function is_public()
+    {
+        return $this->get_prop('status') == 'publish';
+    }
 }
