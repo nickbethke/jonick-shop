@@ -213,3 +213,51 @@ function get_gravatar($email, $s = 80, $d = 'mp', $r = 'g', $img = false, $atts 
     }
     return $url;
 }
+
+function jn_die($message)
+{
+    echo $message;
+    die;
+}
+
+function timezone()
+{
+    return new DateTimeZone(timezone_string());
+}
+function timezone_string()
+{
+    $timezone_string = get_option('timezone_string');
+
+    if ($timezone_string) {
+        return $timezone_string;
+    }
+
+    $offset  = (float) get_option('gmt_offset');
+    $hours   = (int) $offset;
+    $minutes = ($offset - $hours);
+
+    $sign      = ($offset < 0) ? '-' : '+';
+    $abs_hour  = abs($hours);
+    $abs_mins  = abs($minutes * 60);
+    $tz_offset = sprintf('%s%02d:%02d', $sign, $abs_hour, $abs_mins);
+
+    return $tz_offset;
+}
+function mysql2date($format, $date)
+{
+    if (empty($date)) {
+        return false;
+    }
+
+    $datetime = date_create($date, timezone());
+
+    if (false === $datetime) {
+        return false;
+    }
+
+    // Returns a sum of timestamp with timezone offset. Ideally should never be used.
+    if ('G' === $format || 'U' === $format) {
+        return $datetime->getTimestamp() + $datetime->getOffset();
+    }
+    return $datetime->format($format);
+}

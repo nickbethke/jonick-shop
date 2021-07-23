@@ -44,16 +44,26 @@ require_once INC_PATH . "classes/pages/404Page.php";
 require_once INC_PATH . "user.php";
 require_once INC_PATH . "classes/user.php";
 
+require_once INC_PATH . "classes/cms_page.php";
+
 require_once INC_PATH . "options.php";
 require_once INC_PATH . "http.php";
 require_once INC_PATH . "formatting.php";
 
+global $actions;
+
+$actions = [];
+
+require_once INC_PATH . "ajax.php";
+
 require_once INC_PATH . "classes/dependency.php";
 require_once INC_PATH . "classes/dependencies.php";
 require_once INC_PATH . "classes/styles.php";
+require_once INC_PATH . "classes/scripts.php";
 
-global $styles;
+global $styles, $scripts;
 require_once INC_PATH . "styles.php";
+require_once INC_PATH . "scripts.php";
 
 require_once INC_PATH . "classes/Parsedown.php";
 
@@ -69,11 +79,10 @@ require_once INC_PATH . "general-template.php";
 global $theme;
 require_once INC_PATH . "themes.php";
 require_once INC_PATH . "classes/types/theme.php";
+
 load_theme();
 
 $theme->get_function_file() ? require_once $theme->get_function_file() : false;
-
-$files_to_load = $theme->load();
 
 if (defined("USE_THEMES")) {
     global $CORE;
@@ -82,5 +91,12 @@ if (defined("USE_THEMES")) {
     $CORE->load();
 
     $page = $CORE->getPage();
-    $page->render() ? require_once $page->render() : false;
+
+
+
+    $files_to_load = $theme->load();
+
+
+
+    $page->render();
 }

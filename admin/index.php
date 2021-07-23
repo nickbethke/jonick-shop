@@ -5,6 +5,7 @@ require_once __DIR__ . '/admin.php';
 admin_page_head('dashboard', 'Dashboard', ['dashboard']);
 
 ?>
+<h1 class="text-5xl">Dashboard</h1>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-4 gap-4">
     <div class="stat-card hover:bg-green-600 hover:border-green-700 group">
         <div class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">

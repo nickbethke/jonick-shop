@@ -7,8 +7,10 @@ class Page404 extends Page
     }
     public function render()
     {
-?>
-        <title><?php echo $this->get_title() ?></title>
-<?php
+        global $theme;
+        $theme->get_404_page() ? require_once $theme->get_404_page() : false;
+    }
+    public function get_content()
+    {
     }
 }

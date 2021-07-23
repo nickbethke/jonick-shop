@@ -62,12 +62,29 @@ class Theme
         $files = [];
         return $files;
     }
+    public function get_index_page()
+    {
+        if (file_exists($this->dir . "index.php")) {
+            return $this->dir . "index.php";
+        } else {
+            return false;
+        }
+    }
     public function get_cms_page()
     {
         if (file_exists($this->dir . "cms_page.php")) {
             return $this->dir . "cms_page.php";
         } elseif (file_exists($this->dir . "index.php")) {
             return $this->dir . "index.php";
+        } else {
+            return false;
+        }
+    }
+    public function get_404_page()
+    {
+
+        if (file_exists($this->dir . "404.php")) {
+            return $this->dir . "404.php";
         } else {
             return false;
         }

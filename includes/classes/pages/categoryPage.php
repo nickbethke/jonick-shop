@@ -17,4 +17,7 @@ class PageCategory extends Page
         <title><?php echo $this->get_title() ?></title>
 <?php
     }
+    public function get_content()
+    {
+    }
 }

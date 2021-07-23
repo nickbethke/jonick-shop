@@ -68,8 +68,7 @@ function jn_footer()
 function get_content()
 {
     global $page;
-    $Parsedown = new Parsedown();
-    return $Parsedown->text($page->get_content());
+    return $page->get_content();
 }
 function get_the_title()
 {

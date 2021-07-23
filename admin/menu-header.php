@@ -47,7 +47,7 @@ require_once ABSPATH . "admin/includes/menu.php";
                 ?><li>
                         <a href="<?php echo $menu_item[2] ?>" class="<?php echo $css_class ?>">
                             <span class="inline-flex justify-center items-center ml-4">
-                                <i class="fas <?php echo isset($menu_item[3])?$menu_item[3]:"fa-clog";?>"></i>
+                                <i class="fas <?php echo isset($menu_item[3]) ? $menu_item[3] : "fa-clog"; ?>"></i>
                             </span>
 
                             <span class="ml-2 text-sm tracking-wide truncate"><?php echo $menu_item[0] ?></span>

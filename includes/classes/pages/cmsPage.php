@@ -50,7 +50,7 @@ class PageCMS extends Page
     public function render()
     {
         global $theme;
-        return $theme->get_cms_page() ? $theme->get_cms_page() : false;
+        $theme->get_cms_page() ? require_once $theme->get_cms_page() : false;
     }
     public static function page_exists($slug)
     {

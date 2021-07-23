@@ -11,4 +11,5 @@ function set_current_screen($hook_name = '')
         $id = substr($id, 0, -4);
     }
     load_default_admin_style();
+    load_default_admin_scripts();
 }

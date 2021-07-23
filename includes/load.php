@@ -62,3 +62,28 @@ function jn_get_current_user()
         return false;
     }
 }
+
+function get_cms_page_by($field, $value)
+{
+    $pagedata = CMSPage::get_data_by($field, $value);
+
+    if (!$pagedata) {
+        return false;
+    }
+    $cms_page = new CMSPage($pagedata);
+    return $cms_page;
+}
+function get_cms_pages_by($field, $value)
+{
+    $pagedatas = CMSPage::get_datas_by($field, $value);
+    if (!$pagedatas) {
+        return false;
+    }
+    $cms_pages = [];
+    foreach ($pagedatas as $data) {
+        $cms_page = new CMSPage($data);
+        $cms_pages[]  = $cms_page;
+    }
+
+    return $cms_pages;
+}

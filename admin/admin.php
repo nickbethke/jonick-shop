@@ -1,10 +1,21 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 if (!defined('ADMIN')) {
     define('ADMIN', true);
 }
+
 global $auth, $current_user, $menu;
+
+require_once dirname(__DIR__) . "/load.php";
+
+require_once ABSPATH . "admin/load.php";
+
+require_once ABSPATH . 'admin/includes/admin.php';
+
 
 function admin_page_head($hook_suffix, $page_title, $page_styles = [], $page_scripts = [])
 {
@@ -17,15 +28,12 @@ function admin_page_head($hook_suffix, $page_title, $page_styles = [], $page_scr
     } else {
         $title = $global_title;
     }
-    require_once dirname(__DIR__) . "/load.php";
 
-    require_once ABSPATH . "admin/load.php";
 
     session_start();
 
     $auth = new Admin\Auth();
 
-    require_once ABSPATH . 'admin/includes/admin.php';
 
     auth_redirect();
 
@@ -45,6 +53,7 @@ function admin_page_head($hook_suffix, $page_title, $page_styles = [], $page_scr
     set_current_screen();
 
     enqueue_style($page_styles);
+    enqueue_scripts($page_scripts);
 
     if (!isset($_GET['noheader'])) {
         require_once ABSPATH . 'admin/admin-header.php';
@@ -54,6 +63,9 @@ function admin_page_head($hook_suffix, $page_title, $page_styles = [], $page_scr
 function admin_page_footer($hook_suffix, $page_styles = [], $page_scripts = [])
 {
     global $auth, $current_user, $menu, $title;
+
+    enqueue_style($page_styles);
+    enqueue_scripts($page_scripts);
 
     if (!isset($_GET['nofooter'])) {
         require_once ABSPATH . 'admin/admin-footer.php';

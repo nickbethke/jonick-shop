@@ -11,7 +11,7 @@ class Auth
     public function __construct()
     {
         global $current_user;
-        if (!is_a($_SESSION['user'], 'User')) {
+        if (!array_key_exists('user', $_SESSION) || !is_a($_SESSION['user'], 'User')) {
             $this->logged_in = false;
         } else {
             $this->logged_in = true;

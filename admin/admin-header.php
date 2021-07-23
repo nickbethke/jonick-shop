@@ -7,10 +7,8 @@ $title = strip_tags($title);
 $admin_title = "jonick Shop";
 
 if ($admin_title === $title) {
-    /* translators: Admin screen title. %s: Admin screen name. */
     $admin_title = sprintf('%s', $title);
 } else {
-    /* translators: Admin screen title. 1: Admin screen name, 2: Network or site name. */
     $admin_title = sprintf('%1$s &lsaquo; %2$s', $title, $admin_title);
 }
 
@@ -37,4 +35,4 @@ enqueue_style('fontawesome');
 
     <div id="wrap">
         <?php require ABSPATH . 'admin/menu-header.php'; ?>
-        <div id="content" class="h-full ml-14 mt-0 md:mt-14 mb-10 md:ml-64">
+        <div id="content" class="h-full ml-16 mt-0 md:mt-14 mb-10 md:ml-64 px-4 pt-2">

@@ -62,7 +62,12 @@ class User
         switch ($field) {
             case 'id':
                 $user_id  = $value;
-                $db_field = 'ID';
+                $db_field = 'id_user';
+                break;
+            case 'email':
+                $user_id  = false;
+                $value    = $value;
+                $db_field = 'email';
                 break;
             case 'login':
                 $user_id  = false;

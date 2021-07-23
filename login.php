@@ -65,7 +65,6 @@ function login_header($title = "Log In", $message = "")
         if (!$user && strpos($user_name, '@')) {
           $user = get_user_by('email', $user_name);
         }
-
         if (isset($_REQUEST['redirect_to'])) {
           $redirect_to = $_REQUEST['redirect_to'];
           // Redirect to HTTPS if user wants SSL.
