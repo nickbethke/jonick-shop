@@ -79,6 +79,7 @@ function login_header($title = "Log In", $message = "")
         } else {
           session_start();
           $_SESSION['user'] = $user;
+          $_SESSION['last_action'] = new DateTime('now');
           header('Location: /admin/');
           exit;
         }

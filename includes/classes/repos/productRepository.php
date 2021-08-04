@@ -23,9 +23,11 @@ class ProductRepository
         $criteria->addFilter(new EqualsAnyFilter('id_product', $ids));
         return $criteria->run();
     }
-    public function getAll()
+    public function getAll($limit = false, $offset = false)
     {
         $criteria = new ProductCriteria();
+        $limit ? $criteria->addLimit($limit) : false;
+        $offset ? $criteria->addOffsett($offset) : false;
         return $criteria->run();
     }
     public function getFeatured()

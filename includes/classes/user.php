@@ -4,6 +4,7 @@ class User
 {
     public $data;
     public $ID = 0;
+    public $last_action = null;
     public function __construct($id = 0, $name = "")
     {
         if ($id instanceof self) {

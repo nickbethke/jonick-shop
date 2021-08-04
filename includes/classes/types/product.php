@@ -42,7 +42,7 @@ class Product
     {
         $this->id = absint($id);
     }
-    protected function get_id()
+    public function get_id()
     {
         return (int) $this->id;
     }
@@ -78,7 +78,7 @@ class Product
         return $this->get_prop('date_modified');
     }
 
-    protected function get_status()
+    public function get_status()
     {
         return $this->get_prop('status');
     }
@@ -128,6 +128,10 @@ class Product
     public function get_image()
     {
         return $this->get_prop('image');
+    }
+    public function get_quantity()
+    {
+        return (int) $this->get_prop('quantity');
     }
 
     public function get_gallery_images()

@@ -8,11 +8,15 @@ require_once INC_PATH . "load.php";
 
 check_php_versions();
 
-global $db;
+global $db, $cache;
 
 require_db();
 
 require_once INC_PATH . "formatting.php";
+
+require_once INC_PATH . "classes/cache.php";
+
+$cache = new Cache();
 
 require_once INC_PATH . "classes/imageHandler.php";
 

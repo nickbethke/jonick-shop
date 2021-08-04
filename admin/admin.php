@@ -52,6 +52,9 @@ function admin_page_head($hook_suffix, $page_title, $page_styles = [], $page_scr
 
     set_current_screen();
 
+    if (!in_array("jquery", $page_scripts)) {
+        $page_scripts[] = 'jquery';
+    }
     enqueue_style($page_styles);
     enqueue_scripts($page_scripts);
 

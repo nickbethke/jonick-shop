@@ -16,6 +16,9 @@ class ProductCriteria extends Criteria
                 $SQL .= $filter->toString();
             }
         }
+        $this->_limit ? $SQL .= " LIMIT " . $this->_limit : false;
+        $this->_offset ? $SQL .= " OFFSET " . $this->_offset : false;
+
         $products = [];
         $productSQLs = $db->query($SQL)->fetchObject();
         foreach ($productSQLs as $product) {

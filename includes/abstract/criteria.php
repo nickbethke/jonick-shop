@@ -6,6 +6,20 @@ abstract class Criteria
     const CHAIN_PREPEND = 'prepend';
 
     protected $_filters = array();
+    protected $_limit = null;
+    protected $_offset = null;
+
+    public function addLimit(int $limit)
+    {
+        $this->_limit = intval($limit);
+        return $this;
+    }
+
+    public function addOffsett(int $offset)
+    {
+        $this->_offset = intval($offset);
+        return $this;
+    }
 
     public function addFilter($filter, $placement = self::CHAIN_APPEND)
     {

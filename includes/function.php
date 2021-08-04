@@ -286,3 +286,13 @@ function get_plugin_url($path)
     }
     return $url;
 }
+function get_cache($key, $group)
+{
+    global $cache;
+    return $cache->get($key, $group);
+}
+function set_cache($key, $value, $group)
+{
+    global $cache;
+    return $cache->set($key, $value, $group);
+}

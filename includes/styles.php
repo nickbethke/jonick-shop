@@ -38,4 +38,5 @@ function load_default_admin_style()
     $styles->add('dashboard', "/admin/includes/css/dashboard.min.css", ['tailwind']);
     $styles->add('fontawesome', "https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
     $styles->add('tailwind-custom', "/admin/includes/css/tailwind/custom.min.css", ['tailwind']);
+    $styles->add('modal', "/admin/includes/css/tailwind/modal.css", ['tailwind']);
 }

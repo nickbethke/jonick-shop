@@ -8,6 +8,8 @@ class DataBase
     protected $query_closed = TRUE;
     public $query_count = 0;
 
+    protected $queries = [];
+
     public function __construct($dbhost = 'localhost', $dbuser = 'root', $dbpass = '', $dbname = '', $charset = 'utf8')
     {
         $this->connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
@@ -42,6 +44,7 @@ class DataBase
                 array_unshift($args_ref, $types);
                 call_user_func_array(array($this->query, 'bind_param'), $args_ref);
             }
+            array_push($this->queries, $query);
             $this->query->execute();
             if ($this->query->errno) {
                 $this->error('Unable to process MySQL query (check your params) - ' . $this->query->error);
