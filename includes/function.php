@@ -270,7 +270,7 @@ function get_site_url($path = '')
     }
     return $url;
 }
-function get_theme_url($path)
+function get_theme_url($path = false)
 {
     $url = get_option('siteurl') . "/content/themes/" . get_option('active_theme');
     if ($path && is_string($path)) {
@@ -296,3 +296,35 @@ function set_cache($key, $value, $group)
     global $cache;
     return $cache->set($key, $value, $group);
 }
+
+function is_index()
+{
+    global $CORE;
+    return $CORE->get_page_type() === 'index';
+}
+function is_category()
+{
+    global $CORE;
+    return $CORE->get_page_type() === 'category';
+}
+function is_404()
+{
+    global $CORE;
+    return $CORE->get_page_type() === '404';
+}
+function is_product()
+{
+    global $CORE;
+    return $CORE->get_page_type() === 'product';
+}
+function is_cart()
+{
+    global $CORE;
+    return $CORE->get_page_type() === 'cart';
+}
+
+function is_mobile()
+{
+    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+}
+

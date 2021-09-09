@@ -46,6 +46,7 @@ require_once INC_PATH . "classes/pages/categoryPage.php";
 require_once INC_PATH . "classes/pages/cmsPage.php";
 require_once INC_PATH . "classes/pages/productPage.php";
 require_once INC_PATH . "classes/pages/404Page.php";
+require_once INC_PATH . "classes/pages/cartPage.php";
 
 require_once INC_PATH . "user.php";
 require_once INC_PATH . "classes/user.php";

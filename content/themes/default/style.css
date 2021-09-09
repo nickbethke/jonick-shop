@@ -1,4 +1,17 @@
 body {
-  background-color: white;
+  background: #ed5361;
+  background: -webkit-gradient(linear, left top, right top, from(#EF5350), to(#e9c394));
+  background: linear-gradient(90deg, #EF5350 0%, #e9c394 100%);
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.dark body {
+  background: black;
+  background: -webkit-gradient(linear, left top, right top, from(black), to(#611f1e));
+  background: linear-gradient(90deg, black 0%, #611f1e 100%);
+}
+
+.cart {
+  color: #000;
 }
 /*# sourceMappingURL=style.css.map */

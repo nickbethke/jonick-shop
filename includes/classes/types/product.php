@@ -60,12 +60,10 @@ class Product
         return $this->get_prop('name');
     }
 
-
     public function get_slug()
     {
         return $this->get_prop('slug');
     }
-
 
     public function get_date_created()
     {
@@ -98,12 +96,10 @@ class Product
         return $this->get_prop('description');
     }
 
-
     public function get_short_description()
     {
         return $this->get_prop('short_description');
     }
-
 
     public function get_sku()
     {

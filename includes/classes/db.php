@@ -176,4 +176,21 @@ class DataBase
         if (is_int($var)) return 'i';
         return 'b';
     }
+    public function debug()
+    {
+        echo '<script>
+        let params = "scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=0,height=0,left=-1000,top=-1000";
+        let newWin = window.open("about:blank", "jonick Debug", params);
+        newWin.focus();
+        var html = "<html><head><title>jonick DEV Debug</title><link rel=\'stylesheet\' href=\'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\'></head><body><div class=\'jumbotron jumbotron-fluid p-3\'><div class=\'container\'><h1>jonick DEV Debug</h1></div></div><div class=\'content container\'></div></body></html>"
+        newWin.document.write(html); 
+
+        html = "<h2>SQL\'s</h2><ul class=\'list-group\'>';
+        foreach ($this->queries as $q) {
+            echo "<li class='list-group-item'>$q</li>";
+        }
+        echo  '</ul>";
+        newWin.document.querySelector(".content").innerHTML = html;
+        </script>';
+    }
 }

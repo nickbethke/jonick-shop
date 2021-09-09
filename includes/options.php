@@ -20,6 +20,8 @@ function get_option($option, $default = false)
             $value = maybe_unserialize($row->value);
             set_cache($option, $value, 'options');
             return $value;
+        } else {
+            return $default;
         }
     } else {
         return $value;

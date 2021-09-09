@@ -89,4 +89,12 @@ class Theme
             return false;
         }
     }
+    public function get_cart_page()
+    {
+        if (file_exists($this->dir . "cart.php")) {
+            return $this->dir . "cart.php";
+        } else {
+            return false;
+        }
+    }
 }

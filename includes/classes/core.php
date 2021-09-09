@@ -7,6 +7,7 @@ if (!defined('ABSPATH')) {
 class Core
 {
     private $page = NULL;
+    private $type = "404";
 
     private $productPageController = "PageProduct";
     private $indexPageController = "PageIndex";
@@ -23,6 +24,7 @@ class Core
         /* Homepage */
         if ($requestArray[0] === 'index') {
             $this->page = new $this->indexPageController();
+            $this->type = "index";
             return;
         }
 
@@ -30,12 +32,12 @@ class Core
         if (sizeof($requestArray) >= 2 && CATEGORY_URL_PREFIX === $requestArray[0]) {
             $repo = new CategoryRepository();
             $category = $repo->getBySlug($requestArray[1]);
-
             if (is_array($category) && !empty($category)) {
                 $category = $category[0];
             }
             if (!empty($category) && $category instanceof Category) {
                 $this->page = new PageCategory($category);
+                $this->type = "category";
             } else {
                 $this->page = new Page404();
             }
@@ -46,6 +48,14 @@ class Core
         if (sizeof($requestArray) == 2 && PRODUCT_URL_PREFIX === $requestArray[0]) {
             $slug = $requestArray[1];
             $this->page = $this->loadProductPage($slug);
+            $this->type = "product";
+            return;
+        }
+
+        /* Cart */
+        if ($requestArray[0] === 'cart') {
+            $this->page = new PageCart();
+            $this->type = "cart";
             return;
         }
 
@@ -55,6 +65,7 @@ class Core
             $page = new PageCMS($requestSlug);
             if ($page->is_public()) {
                 $this->page = $page;
+                $this->type = "cms";
                 return;
             } else {
                 $this->page = new Page404;
@@ -66,6 +77,10 @@ class Core
     public function set_page($page)
     {
         $this->page = $page;
+    }
+    public function get_page_type()
+    {
+        return $this->type;
     }
 
     private static function handleRequest()

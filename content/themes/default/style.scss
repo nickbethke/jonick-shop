@@ -1,3 +1,14 @@
 body {
-    background-color: white;
+    background: rgb(237, 83, 97);
+    background: linear-gradient(90deg, #EF5350 0%, rgba(233, 195, 148, 1) 100%);
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.dark body {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(97, 31, 30, 1) 100%);
+}
+
+.cart {
+    color: #000;
 }
